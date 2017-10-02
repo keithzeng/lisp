@@ -40,7 +40,6 @@ typedef struct lval lval;
 typedef struct lenv lenv;
 
 /* Lisp Value */
-/* Lisp Value */
 
 enum { LVAL_ERR, LVAL_NUM,   LVAL_SYM, LVAL_STR,
        LVAL_FUN, LVAL_SEXPR, LVAL_QEXPR
@@ -1183,18 +1182,17 @@ int main(int argc, char** argv)
     Lispy   = mpc_new("lispy");
 
     mpca_lang(MPCA_LANG_DEFAULT,
-              "                                              \
-      number  : /-?[0-9]+/ ;                       \
-      symbol  : /[a-zA-Z0-9_+\\-*\\/\\\\=<>!&]+/ ; \
-      string  : /\"(\\\\.|[^\"])*\"/ ;             \
-      comment : /;[^\\r\\n]*/ ;                    \
-      sexpr   : '(' <expr>* ')' ;                  \
-      qexpr   : '{' <expr>* '}' ;                  \
-      expr    : <number>  | <symbol> | <string>    \
-              | <comment> | <sexpr>  | <qexpr>;    \
-      lispy   : /^/ <expr>* /$/ ;                  \
-    ",
-              Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Lispy);
+      "                                              \
+        number  : /-?[0-9]+/ ;                       \
+        symbol  : /[a-zA-Z0-9_+\\-*\\/\\\\=<>!&]+/ ; \
+        string  : /\"(\\\\.|[^\"])*\"/ ;             \
+        comment : /;[^\\r\\n]*/ ;                    \
+        sexpr   : '(' <expr>* ')' ;                  \
+        qexpr   : '{' <expr>* '}' ;                  \
+        expr    : <number>  | <symbol> | <string>    \
+                | <comment> | <sexpr>  | <qexpr>;    \
+        lispy   : /^/ <expr>* /$/ ;                  \
+    ", Number, Symbol, String, Comment, Sexpr, Qexpr, Expr, Lispy);
 
     lenv* e = lenv_new();
     lenv_add_builtins(e);
